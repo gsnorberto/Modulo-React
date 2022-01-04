@@ -1,0 +1,8 @@
+//Inicializar o projeto
+npm start 
+
+//Parar execução
+ctrl+c
+
+//Instalar as dependências
+npm install
