@@ -1,0 +1,8 @@
+Criando projeto com vite(modelo de projeto pronto pré-configurado):
+    >> npm init vite react-vite --template react-ts
+    >> Depois digite o comando: npm install
+
+Executar o projeto (consulte os scripts do package.json):
+    >> npm run dev (inicializar o projeto em modo de desenvolvimento)
+
+OBS: Há algumas diferença sutis entre um projeto CRA e um projeto VITE
