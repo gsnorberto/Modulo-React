@@ -1,33 +1,31 @@
-import React from 'react'
-
+import {useState} from 'react'
 import {Header} from './components/Header'
 
 const App = () => {
-  let name: string = "Gabriel";
-  let lastName: string = "Norberto";
-  let n1: number = 10;
-  let n2: number = 3;
-  let link: string = "http://www.google.com"
+  //Usando State... Mudança dinâmica
+  //Cria uma state "num" com valor inicial "0" ao qual sempre que houver alteração nela, seus dados atualizarão na tela. "setnum" é a função que irá alterar o valor dessa state
+  const [num, setnum] = useState(0); 
+  const [name, setname] = useState('Gabriel')
 
-  // Criando em formato React
-  // return React.createElement('div', null, 'Olá Mundo!')
-  
-  // Criando em formato HTML (faz o mesmo que o código acima).
-  // Será convertivo pelo compilador chamado Babel que vai converter o código para o modelo acima.
+  const sumNumber = () => {
+    setnum(num+1); //10, 20, 30 ...
+  }
 
-  function subtrair(n1: number, n2:number){
-    return n1-n2;
+  const changeName = () => {
+    setname('Norberto');
   }
 
   return(
     <>
-    <Header title = "Este é um exemplo" />
+      <Header title = "Este é um exemplo" />
 
-    <div>Olá {name}, tudo bem?</div>
-    <div>Multiplicação: {n1 * n2}</div>
-    <div>Subração com função: {subtrair(n1, n2)}</div>
-    <div>Meu nome é {`${name.toUpperCase()} ${lastName}`}</div>
-    <a href={link}>Acessar Google</a>
+      <div>
+        Valor = {num} 
+        <button onClick={sumNumber}>Clique Aqui</button>
+        <br />
+        Nome = {name}
+        <button onClick={changeName}>Clique Aqui</button>
+      </div>
     </>
   ) 
 }
