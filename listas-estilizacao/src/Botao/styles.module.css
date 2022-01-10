@@ -1,0 +1,15 @@
+.square{
+    background-color: #FF0000;
+    padding: 30px;
+}
+.botao{
+    background-color: blue;
+    color: #FFFFFF;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    border-radius: 20px;
+    width: 150px;
+}
+.legend{
+    color: #00FF00;
+}
