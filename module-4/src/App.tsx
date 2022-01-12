@@ -1,5 +1,9 @@
-import { useState, useEffect } from 'react';
+//Utilizando a API Fake: https://jsonplaceholder.typicode.com/
+
+import { useState, useEffect, ChangeEvent } from 'react';
+import { PostForm } from './components/PostForm';
 import { Post } from './types/Post';
+import { PostItem } from './components/PostItem'
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -7,31 +11,52 @@ function App() {
 
   //Quando abre a página ele já carrega o "loadMovies"
   useEffect(() => {
-    
+    loadPosts();
   }, []);
 
+  //Carregar um Post (Get)
+  const loadPosts = async () => {
+    setLoading(true);
+    let response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    let json = await response.json();
+    setLoading(false);
+    setPosts(json);
+  }
+
+  //Adicionar elemento
+  const handleAddPost = async (title: string, body:string) => {
+    let response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: 'POST',
+      body: JSON.stringify({ title, body, userId: 1 }),
+      headers: { 'Content-Type': 'application/json' } 
+    });
+    
+    let json = await response.json();
+
+    if(json.id){ //Envio deu certo
+      alert('Post adicionado com sucesso')
+    } else {
+      alert('Ocorreu algum erro')
+    }
+  }
   
   return (
-    <div>
-      {/* <button className="block bg-blue-400 p-2 rounded" onClick={loadMovies}>Carregar Filmes</button> */}
-
-      {/* Enquanto tiver carregando */}
+    <div className="p-5">
       {loading &&
         <div>Carregando...</div>
       }
 
-      {/* Quando terminar de carregar */}
+      <PostForm onAdd={handleAddPost}/>
+
       {!loading && posts.length > 0 &&
         <>
           <div>
             <br />
             Total de Posts: {posts.length}
           </div>
-          <div className="grid grid-cols-6 gap-3">
+          <div>
             {posts.map((item, index) => (
-              <div key={index}>
-                
-              </div>
+              <PostItem data={item} />
             ))}
           </div>
         </>
@@ -39,7 +64,7 @@ function App() {
 
       {!loading && posts.length === 0 &&
         <div>
-          Estamos com problemas. Tente novamente mais tarde!
+          Não há Posts para exibir.
         </div>
       }
     </div>
