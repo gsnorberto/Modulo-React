@@ -1,30 +1,49 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Post } from './types/Post';
 
 function App() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(false);
 
-  const[name,setName] = useState('Gabriel')
-  const[lastName,setLastName] = useState('Norberto')
-  const[fullName, setFullName] = useState('')
+  //Quando abre a página ele já carrega o "loadMovies"
+  useEffect(() => {
+    
+  }, []);
 
-  // Toda vez que houver uma modificação no "name" OU "lastName" o "useEffect" será executado
-  useEffect(()=>{
-    setFullName(`${name} ${lastName}`)
-  }, [name, lastName] )
-
-  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setName( e.target.value )
-  }
-  const handleLastNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setLastName( e.target.value )
-  }
-
+  
   return (
     <div>
-      <input type="text" placeholder="digite seu NOME" value={name} onChange={handleNameChange}/>
-      <input type="text" placeholder="digite seu SOBRENOME" value={lastName} onChange={handleLastNameChange} />
-       Nome Completo: {fullName}
+      {/* <button className="block bg-blue-400 p-2 rounded" onClick={loadMovies}>Carregar Filmes</button> */}
+
+      {/* Enquanto tiver carregando */}
+      {loading &&
+        <div>Carregando...</div>
+      }
+
+      {/* Quando terminar de carregar */}
+      {!loading && posts.length > 0 &&
+        <>
+          <div>
+            <br />
+            Total de Posts: {posts.length}
+          </div>
+          <div className="grid grid-cols-6 gap-3">
+            {posts.map((item, index) => (
+              <div key={index}>
+                
+              </div>
+            ))}
+          </div>
+        </>
+      }
+
+      {!loading && posts.length === 0 &&
+        <div>
+          Estamos com problemas. Tente novamente mais tarde!
+        </div>
+      }
     </div>
-  )
+  );
 }
 
 export default App
