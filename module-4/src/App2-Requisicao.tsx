@@ -1,3 +1,5 @@
+//OBS: Para utilizar esse documento defina-o (renomear) como App.tsx
+
 import { useState, useEffect } from 'react'
 import { Movie } from './types/Movie'
 

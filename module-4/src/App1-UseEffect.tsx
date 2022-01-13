@@ -1,3 +1,5 @@
+//OBS: Para utilizar esse documento defina-o (renomear) como App.tsx
+
 import { ChangeEvent, useEffect, useState } from 'react';
 
 function App() {

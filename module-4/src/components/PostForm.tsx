@@ -28,7 +28,7 @@ export const PostForm = ({ onAdd }: Props) => {
    }
 
    return (
-      <fieldset className="border-2 mb-3 p-3">
+      <fieldset className="border-2 mb-3 p-3 ">
          <legend>Adicionar Novo Post</legend>
          <input
             value={addTitleText}
