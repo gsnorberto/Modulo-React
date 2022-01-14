@@ -1,0 +1,1 @@
+A pasta "hooks" é onde fica localizada os reducers 
