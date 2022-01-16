@@ -6,7 +6,7 @@ import { AboutItem } from '../pages/AboutItem'
 import { NotFound } from '../pages/NotFound'
 import { RequireAuth } from '../RequireAuth'
 
-export const MainRouts = () => {
+export const MainRoutes = () => {
    // MÉTODO 1 - CRIAÇÃO DE ROTAS
    // Criar rotas em forma de objeto
    return useRoutes([

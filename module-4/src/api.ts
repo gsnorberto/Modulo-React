@@ -9,6 +9,7 @@ export const api = {
    getAllPosts: async () => {
       //Com axios
       let response = await http.get(`/posts`)
+      
       return response.data;
 
       // Com Fetch
@@ -21,6 +22,7 @@ export const api = {
       let response = await http.post(`/posts`, {
          title, body, userId
       });
+
       return response.data;
 
       //Com Fetch

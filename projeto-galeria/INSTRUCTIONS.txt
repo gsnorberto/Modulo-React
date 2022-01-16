@@ -1,0 +1,52 @@
+EXERCÍCIOS:
+
+1) LER TODOS OS ALBUMS DO JSON PLACEHOLDER E EXIBIR NA TELA CADA UM
+
+2) AO CLICAR EM UM ALBUM, DEVE SER EXIBIDA TODAS AS FOTOS EM MINIATURAS
+   -CARREGAR AS INFORMAÇÕES DO ÁLBUM:
+      -TÍTULO E FOTOS
+   -CRIAR BOTÃO "VOLTAR"
+
+3) AO CLICAR EM UMA FOTO EM MINIATURA ELA DEVE SER ABERTA EM OUTRA PÁGINA
+   -CARREGAR INFORMAÇÕES DA FOTO
+      -TÍTULO E A PRÓPRIA FOTO MAXIMIZADA
+   -CRIAR BOTÃO "VOLTAR"
+
+
+******************* OBSERVAÇÕES **********************
+- Utilizar o axios
+- Configurar o BaseUrl no Axios
+- Criar as rotas com React Route
+- Utilizar componente com as rotas em forma de objeto
+
+********************** URLS **************************
+Home (Todos os Albums):
+http://localhost:3000/
+
+Album (Album específico)
+http://localhost:3000/album/3
+
+Album (Foto específica)
+http://localhost:3000/photo/103
+
+
+************** API FAKE: PLACEHOLDER *****************
+
+100 Albuns com 50 fotos em cada um. 5 mil fotos no total.
+
+Todos Albuns:
+(100 albums no total)
+https://jsonplaceholder.typicode.com/albums
+
+Album específico:
+(Nesse exemplo: Album 1 do conjunto de albums)
+https://jsonplaceholder.typicode.com/albums/1
+
+Fotos do Album:
+(Nesse exemplo: Conjunto de fotos do album 1):
+(Fotos de 1 ao 50. No album 2 será foto de 51 ao 100)
+https://jsonplaceholder.typicode.com/albums/1/photos
+
+Foto Específica:
+(Nesse exemplo: Foto 51 que se encontra no album 2):
+https://jsonplaceholder.typicode.com/photos/51/
