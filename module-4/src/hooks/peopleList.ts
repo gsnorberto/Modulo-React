@@ -17,20 +17,23 @@ type ActionType = {
    }
 }
 
+// Valor inicial do "list" no "App.tsx" antes de ser adicionado elementos
 const initialState: Person[] = [];
 
+// "state" = array com as pessoas já cadastradas. Conteúdo do "list" no "App.tsx"
+// "ActionType" = Valores inseridos pelo usuário enviado pela function "dispatch"
 const reducer = (state: Person[], action: ActionType) => {
    switch(action.type){
       case 'ADD':
          if(action.payload?.name){
-            const newState = [...state]
+            const newState = [...state] //Faz uma cópia do Array com as pessoas já cadastradas
 
             newState.push({
                id: uuidV4(),
                name: action.payload?.name
             });
 
-            return newState;
+            return newState; // Retorna um array com as pessoas já cadastradas mais a que acabou de ser cadastrada. O valor será atualizado no "list"
          }
       break;
 

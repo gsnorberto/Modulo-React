@@ -15,7 +15,7 @@ function App() {
                name: nameInput
             }
          });
-         setNameInput('');
+         setNameInput(''); //Limpa o Input depois de adicionar
       }
    }
 
