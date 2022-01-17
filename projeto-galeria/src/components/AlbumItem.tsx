@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import { Album } from '../types/TypeAlbum'
+import { TypeAlbum } from '../types/TypeAlbum'
 
 type Props = {
-   data: Album;
+   data: TypeAlbum;
    numAlbum: number;
 }
 
@@ -10,7 +10,7 @@ export const AlbumItem = ({data, numAlbum}: Props) => {
    const navigate = useNavigate();
 
    const handleAccessAlbum = () => {
-      navigate(`/album/${numAlbum}`)
+      navigate(`/album/${numAlbum+1}`)
    }
 
    return(
