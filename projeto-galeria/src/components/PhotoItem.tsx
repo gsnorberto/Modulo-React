@@ -10,11 +10,11 @@ export const PhotoItem = ({data, numPhoto}: Props) => {
    const navigate = useNavigate();
    
    const handleAccessPhoto = () => {
-      navigate(`/photo/${numPhoto+1}`)
+      navigate(`/photo/${numPhoto}`)
    }
 
    return(
-      <div onClick={handleAccessPhoto} className=" m-3 border-solid border-black border-2 inline-block hover:border-gray-300 cursor-pointer">
+      <div onClick={handleAccessPhoto} className=" m-3 border-solid border-slate-400 border-2 inline-block hover:border-slate-400 hover:bg-slate-400 cursor-pointer">
          <div className="m-5">
             <img src={data.thumbnailUrl} />
          </div>

@@ -15,9 +15,10 @@ export const Albums = () => {
       setAlbums(json);
    }
 
+
    return(
       <div className="m-5">
-         <div>ÁLBUNS</div>
+         <div className="text-slate-700 font-bold m-5 text-xl">ÁLBUNS</div>
          <div>
             {albums.map((item, index)=>(
                <AlbumItem data={item} numAlbum={index} />

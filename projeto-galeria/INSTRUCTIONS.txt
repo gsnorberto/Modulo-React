@@ -42,7 +42,7 @@ Album específico:
 (Nesse exemplo: Album 1 do conjunto de albums)
 https://jsonplaceholder.typicode.com/albums/1
 
-Fotos do Album:
+Todas Fotos do Album:
 (Nesse exemplo: Conjunto de fotos do album 1):
 (Fotos de 1 ao 50. No album 2 será foto de 51 ao 100)
 https://jsonplaceholder.typicode.com/albums/1/photos

@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../api"
+import { TypePhoto } from "../types/TypePhoto"
 
 export const PhotoDetail = () => {
    const navigate = useNavigate();
-   const [photoElement, setPhotoElement] = useState();
+   const [photoElement, setPhotoElement] = useState<TypePhoto>();
+   const { slug } = useParams();
 
    useEffect(() => {
       loadPhoto();
    }, [])
 
    const loadPhoto = async () => {
-      // const json = await api.getElementPhoto();
-      // setPhotoElement(json);
+      const json = await api.getElementPhoto(slug ? parseInt(slug, 10) : 0);
+      setPhotoElement(json);
    }
 
    const handleHomeButton = () => navigate('/');
@@ -20,11 +22,11 @@ export const PhotoDetail = () => {
 
    return (
       <div>
-         <button onClick={handleHomeButton}>Página Inicial</button>  <br />
-         <button onClick={handleBackButton}>Voltar</button>
-         <div>Nome da Foto</div>
+         <button className="text-white bg-slate-700 p-2 rounded cursor-pointer hover:bg-slate-500" onClick={handleHomeButton}>Página Inicial</button>  
+         <button className="text-white bg-slate-700 ml-2 p-2 rounded cursor-pointer hover:bg-slate-500" onClick={handleBackButton}>Voltar</button>
+         <div className="font-medium text-slate-700 mt-5 uppercase">Foto: {photoElement ? photoElement.title : ''}</div>
          <div className="m-5">
-            {/* <img src={} /> */}
+            <img src={photoElement ? photoElement.url : ''} />
          </div>
       </div>
       

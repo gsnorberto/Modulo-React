@@ -25,13 +25,14 @@ export const Photos = () => {
       setPhotos(json)
       setLoading(false);
    }
-      const loadAlbum = async () => {
+
+   const loadAlbum = async () => {
       setLoading(true);
       let json = await api.getElementAlbum(slug ? parseInt(slug, 10) : 0)
       setAlbum(json)
       setLoading(false);
    }
-   
+
    const handleHomeButton = () => {
       navigate('/');
    }
@@ -44,12 +45,12 @@ export const Photos = () => {
 
          {!loading &&
             <>
-               <button onClick={handleHomeButton}>Página Inicial</button>
+               <button className="text-white bg-slate-700 p-2 rounded cursor-pointer hover:bg-slate-500" onClick={handleHomeButton}>Página Inicial</button>
                <br />
-               Album: {album ? album.title : ''}
+               <div className="font-medium text-slate-700 mt-5 uppercase">Album: {album ? album.title : ''}</div>
                <br />
                {photos.map((item, index) => (
-                  <PhotoItem data={item} numPhoto={index} />
+                  <PhotoItem data={item} numPhoto={item.id} />
                ))}
             </>
          }
