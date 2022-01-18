@@ -7,43 +7,53 @@ import { PhotoItem } from '../components/PhotoItem'
 import { useNavigate, useParams } from "react-router-dom"
 
 export const Photos = () => {
-   const[photos, setPhotos] = useState<TypePhoto[]>([]);
-   const[albuns, setAlbuns] = useState<TypeAlbum[]>([]);
+   const [photos, setPhotos] = useState<TypePhoto[]>([]);
+   const [album, setAlbum] = useState<TypeAlbum>()
+   const [loading, setLoading] = useState(false);
    const navigate = useNavigate();
+   const { slug } = useParams();
 
    useEffect(() => {
       loadPhotos();
-      loadAlbuns();
+      loadAlbum();
    }, [])
 
    const loadPhotos = async () => {
       // OBS: ESTÁ ESTÁTICO - MUDAR PARA DINÂMICO
-      let json = await api.getAllPhotos();
+      setLoading(true);
+      let json = await api.getAllPhotos(slug ? parseInt(slug, 10) : 0);
       setPhotos(json)
+      setLoading(false);
    }
-   const loadAlbuns = async () => {
-      // OBS: ESTÁ ESTÁTICO - MUDAR PARA DINÂMICO
-      let json = await api.getAllAlbums();
-      setAlbuns(json)
+      const loadAlbum = async () => {
+      setLoading(true);
+      let json = await api.getElementAlbum(slug ? parseInt(slug, 10) : 0)
+      setAlbum(json)
+      setLoading(false);
    }
-
+   
    const handleHomeButton = () => {
       navigate('/');
    }
 
-   const {slug}= useParams();
-   const num: number | undefined = slug ? parseInt(slug, 10) : undefined;
-
-   return(
+   return (
       <div>
-         {num}
-         <button onClick={handleHomeButton}>Página Inicial</button>
-         <br />
-         <div>NOME DO ALBUM</div>
+         {loading &&
+            <div>Carregando...</div>
+         }
 
-         {photos.map((item, index) => (
-            <PhotoItem data={item} numPhoto={index}/>
-         ))}
+         {!loading &&
+            <>
+               <button onClick={handleHomeButton}>Página Inicial</button>
+               <br />
+               Album: {album ? album.title : ''}
+               <br />
+               {photos.map((item, index) => (
+                  <PhotoItem data={item} numPhoto={index} />
+               ))}
+            </>
+         }
+
       </div>
    );
 }

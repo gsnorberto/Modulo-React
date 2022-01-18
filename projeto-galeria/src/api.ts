@@ -12,8 +12,17 @@ export const api = {
       let response = await http.get('/albums');
       return response.data;
    },
-   getAllPhotos: async () => {
-      let response = await http.get(`/albums/1/photos`)
+   getElementAlbum: async (num: number) => {
+      let response = await http.get(`/albums/${num}`);
+      return response.data;
+   },
+   getAllPhotos: async (num: number) => {
+      // Mudar para dinâmico
+      let response = await http.get(`/albums/${num}/photos`)
+      return response.data;
+   },
+   getElementPhoto: async (num: number) => {
+      let response = await http.get(`/photos/${num}`)
       return response.data;
    }
 }

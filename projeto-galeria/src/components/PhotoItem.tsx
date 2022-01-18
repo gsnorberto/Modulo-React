@@ -14,7 +14,7 @@ export const PhotoItem = ({data, numPhoto}: Props) => {
    }
 
    return(
-      <div onClick={handleAccessPhoto} className=" m-3 border-solid border-black border-2 inline-block">
+      <div onClick={handleAccessPhoto} className=" m-3 border-solid border-black border-2 inline-block hover:border-gray-300 cursor-pointer">
          <div className="m-5">
             <img src={data.thumbnailUrl} />
          </div>

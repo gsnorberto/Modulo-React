@@ -3,7 +3,7 @@ import { api } from '../api'
 import { TypeAlbum } from '../types/TypeAlbum'
 import { AlbumItem } from '../components/AlbumItem'
 
-export const Home = () => {
+export const Albums = () => {
    const [albums, setAlbums] = useState<TypeAlbum[]>([]);
 
    useEffect(() => {
