@@ -1,6 +1,5 @@
 import { reducerActionType } from '../types/reducerActionType'
 
-
 export type UserType = {
    name: string,
    age: number
@@ -15,11 +14,11 @@ export const userReducer = (state: UserType, action: reducerActionType) => {
    switch (action.type) {
       case 'CHANGE_NAME':
          return {...state, name: action.payload.name}
-   }
-   switch (action.type) {
+      break;
+      
       case 'CHANGE_AGE':
-         return {...state, name: action.payload.age}
+         return {...state, age: action.payload.age}
+      break;
    }
-
-   return state
+   return state;
 }

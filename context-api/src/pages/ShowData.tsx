@@ -7,9 +7,18 @@ export const ShowData = () => {
    const { state, dispatch } = useContext(Context)
    return (
       <div>
-         {/* Dados alterados no reducer */}
-         
-         Tela ShowData de {state.user.name} que tem {state.user.age} anos.<br />
+         <h3>Tela ShowData</h3>
+
+         {state.user.name &&
+            <>
+               MEU NOME É {state.user.name} <br />
+               EU TENHO {state.user.age}
+            </>
+         }
+         {!state.user.name &&
+            <div>NÃO HÁ INFORMAÇÕES</div>
+         }
+
          <Link to="/">Voltar para SignUp</Link>
       </div>
    );

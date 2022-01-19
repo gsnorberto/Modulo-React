@@ -15,15 +15,16 @@ const initialState = {
    user: userInitialState
 }
 
-export const Context = createContext<ContextType>({
-   state: initialState,
-   dispatch: () => null
-});
 
+export const Context = createContext<ContextType>({ state: initialState, dispatch: () => null });
+
+//recebe dois objetos: o state e o dispatch e executa a função userReducer dentro de "userReducer.js" passando como parâmentro esses dois objetos recebidos
 const mainReducer = (state: initialStateType , action: reducerActionType) => ({
    user: userReducer(state.user, action)
 });
 
+//Executa uma função useReducer passando a função "mainReducer" acima e o "initialState"
+//Essa função é exportada no app.tsx
 export const ContextProvider: React.FC = ({ children }) => {
    const [state, dispatch] = useReducer(mainReducer, initialState)
 

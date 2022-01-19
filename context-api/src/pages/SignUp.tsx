@@ -6,41 +6,24 @@ import { Context } from '../contexts/Context'
 export const SignUp = () => {
    
    const {state, dispatch} = useContext(Context);
-   const [nameInput, setNameInput] = useState('');
-   const [ageInput, setAgeInput] = useState(0);
 
    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setNameInput(e.target.value)
-   }
-
-   const handleAgeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setAgeInput(parseInt(e.target.value))
-   }
-
-   {/* Informações processadas no useReducer */}
-   const handleSave = () => {
       dispatch({
          type: 'CHANGE_NAME',
          payload: {
-            name: nameInput
-         }
-      });
-      dispatch({
-         type: 'CHANGE_AGE',
-         payload: {
-            name: ageInput
+            name: e.target.value
          }
       });
    }
-
-   // const handleChangeName = () => {
-   //    dispatch({
-   //       type: 'CHANGE_NAME',
-   //       payload: {
-   //          name: 'Thiago'
-   //       }
-   //    })
-   // }
+   
+   const handleAgeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      dispatch({
+         type: 'CHANGE_AGE',
+         payload: {
+            age: parseInt(e.target.value)
+         }
+      });
+   }
 
    return(
       <div>
@@ -48,21 +31,16 @@ export const SignUp = () => {
          <input
             type="text"
             placeholder="Digite um nome"
-            value={nameInput}
+            value={state.user.name}
             onChange={handleNameChange}
          />
 
          <input
             type="text"
             placeholder="Digite sua idade"
-            value={ageInput}
+            value={state.user.age}
             onChange={handleAgeChange}
          />
-
-         <button onClick={handleSave}></button>
-
-         
-         {/* <button onClick={handleChangeName}>Trocar nome para Thiago</button>  */}
 
          <Link to="/exibir">Ir para ShowData</Link>
       </div>
