@@ -4,7 +4,9 @@ import { useContext } from 'react'
 import { Context } from '../contexts/Context'
 
 export const ShowData = () => {
+
    const { state, dispatch } = useContext(Context)
+   
    return (
       <div>
          <h3>Tela ShowData</h3>

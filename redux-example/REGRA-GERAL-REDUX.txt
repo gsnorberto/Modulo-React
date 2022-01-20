@@ -1,0 +1,16 @@
+-> Store (Recomenda-se ter apenas uma por aplicação)
+   -> Local onde vai ser armazenado as informações
+
+-> Provider
+   -> Responsável por disponibilizar a "Store" para todo mundo dentro do provider
+
+-> Reducers (slice)
+
+-> Actions
+   -> Ações presentes dentro do reducer para modificar informações da store
+
+-> Dispatch
+   -> Utilizados dentro das ações para trocar as informações
+
+-> Selectors
+   -> Pegar as informações presentes nas stores
