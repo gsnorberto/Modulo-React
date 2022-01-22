@@ -10,8 +10,8 @@ import { useAppSelector } from './redux/hooks/useAppSelector';
 function App() {
    // const user = useSelector((state: RootState) => state.user)
    const dispatch = useDispatch();
-   const user = useAppSelector(state => state.user)
-   const theme = useAppSelector(state => state.theme)
+   const user = useAppSelector((state: { user: any; }) => state.user)
+   const theme = useAppSelector((state: { theme: any; }) => state.theme)
 
    const handleNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
       dispatch( setName(e.target.value) );
